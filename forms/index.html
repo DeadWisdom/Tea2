@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>
+        Green Tea - Form Test
+    </title>
+    
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script type='text/javascript' src='../jquery.js'></script>
+    <script type='text/javascript' src='../src/core.js'></script>
+    <script type='text/javascript' src='../src/element.js'></script>
+    <script type='text/javascript' src='../src/element.js'></script>
+    
+    <script type="text/javascript">
+        Tea.require(
+            '../src/core.js',
+            '../src/element.js',
+            '../src/container.js',
+            '../src/input.js',
+            '../src/form.js'
+        );
+
+        function go() {
+            var form = Tea.Form({
+                items: [
+                    {type: 't-input', name: 'name', label: 'Full Name', hint: "Your full name as it would be listed in a directory.", placeholder: 'Sally Shortlist'},
+                    {type: 't-input', name: 'short', label: 'Short Name', hint: "What your friends call you.", placeholder: 'Sally'},
+                    {type: 't-input', name: 'location', label: 'Location', hint: "Where in the world are you?", placeholder: 'Chicago'},
+                    {type: 't-textarea', name: 'summary', label: 'Summary', hint: "A short 160 max summary of you for all the world to see.", placeholder: "Administrator and customer service rep for Shortlist.  Ask me for help!"}
+                ]
+            });
+
+            form.source.appendTo(document.body);
+
+            form.setErrors({
+                'short': ['This field is required.']
+            });
+        };
+
+        //$(go);
+    </script>
+</head>
+<body>
+    <form class="t-fieldset" action="." method="post">
+        <div class="t-field">
+            <label class="t-prompt" for="name">
+                <div class="t-label">Full Name</div>
+                <div class="t-hint">Your full name as it would be listed in a directory.</div>
+            </label>
+            <div class="t-entry">
+                <input type="text" class="t-input" placeholder="Sally Shortlist" id="name" name="name"/>
+                <div class="t-errors"></div>
+            </div>
+        </div>
+        <div class="t-field t-has-errors">
+            <div class="t-prompt">
+                <label class="t-label" for="short">Short Name</label>
+                <p class="t-hint">What your friends call you.</p>
+            </div>
+            <div class="t-entry">
+                <input type="text" class="t-input" placeholder="Sally" id="short" name="short"/>
+                <div class="t-errors">This field is required.</div>
+            </div>
+        </div>
+        <div class="t-field">
+            <div class="t-prompt">
+                <label class="t-label" for="location">Location</label>
+                <p class="t-hint">Where in the world are you?</p>
+            </div>
+            <div class="t-entry">
+                <input type="text" class="t-input" placeholder="Chicago" id="location" name="location"/>
+                <div class="t-errors"></div>
+            </div>
+        </div>
+        <div class="t-field">
+            <div class="t-prompt">
+                <label class="t-label" for="summary">Summary</label>
+                <p class="t-hint">A short 160 max summary of you for all the world to see.</p>
+            </div>
+            <div class="t-entry">
+                <textarea class="t-textarea" placeholder="Administrator and customer service rep for Shortlist.  Ask me for help!" id="summary" name="summary"></textarea>
+                <div class="t-errors"></div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
